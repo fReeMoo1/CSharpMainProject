@@ -19,9 +19,18 @@ namespace UnitBrains.Player
             ///////////////////////////////////////
             // Homework 1.3 (1st block, 3rd module)
             ///////////////////////////////////////           
-            var projectile = CreateProjectile(forTarget);
-            AddProjectileToList(projectile, intoList);
-            ///////////////////////////////////////
+            if (GetTemperature() >= OverheatTemperature)
+            {
+                return;
+            }
+            IncreaseTemperature();
+
+            for (int j = 0; j <= GetTemperature()-1 ; j++ )
+            {
+                var projectile = CreateProjectile(forTarget);
+                AddProjectileToList(projectile, intoList);
+            }
+              ///////////////////////////////////////
         }
 
         public override Vector2Int GetNextStep()
